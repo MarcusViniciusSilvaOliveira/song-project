@@ -9,7 +9,7 @@ import Spinner from 'react-bootstrap/Spinner';
 const Loading = () => {
     const { state } = useContext(Context);
     return (
-        state.requestState == REQUEST_PEDDING ?
+        state.requestState === REQUEST_PEDDING ?
             <div>
                 <SpinnerDiv>
                     <Spinner animation="border" role="status">

@@ -1,4 +1,5 @@
 const PEDDING = 'PEDDING';
 const COMPLETED = 'COMPLETED';
 
-export default { PEDDING, COMPLETED };
+const actions = { PEDDING, COMPLETED };
+export default actions;

@@ -5,7 +5,7 @@ import Player from '../../components/ui/player/index'
 import { GetSongs, GetSongAudio } from '../../services/songs';
 
 import { DEFAULT_API_URL } from '../../helpers/constants';
-import { DivContainer } from './styles';
+import { DivContainer, EmptyDiv } from './styles';
 import ListGroup from 'react-bootstrap/ListGroup';
 
 const Visualization = () => {
@@ -17,11 +17,6 @@ const Visualization = () => {
       setSongs(res.data);
     })
   }, []);
-
-  const selectSong = (song) => {
-    if(selectedSong != song)
-      setSelectedSong(song);
-  }
 
   const ChangeSongFromButtons = (next) => {
     const nextIndex = next ? 1 : -1;
@@ -46,17 +41,23 @@ const Visualization = () => {
     setSelectedSong(songs[newIndex]);
   }
 
-  const SongsContainer = useMemo(() =>
-    <DivContainer>
+  const SongsContainer = useMemo(() =>{
+
+    const selectSong = (song) => {
+      if(selectedSong !== song)
+        setSelectedSong(song);
+    }
+
+    return <DivContainer>
       <ListGroup numbered>
         {
           songs.map((song, index) => {
-            return <SongContainer setSelectedSong={selectSong} isSelectedSong={song.id == selectedSong?.id} song={song} key={index} />
+            return <SongContainer setSelectedSong={selectSong} isSelectedSong={song.id === selectedSong?.id} song={song} key={index} />
           })
         }
       </ListGroup >
     </DivContainer>
-    , [songs, selectedSong]);
+  },[songs, selectedSong]);
 
   const PlayerContainer = () => <Player 
     src={`${DEFAULT_API_URL}/api${GetSongAudio(selectedSong.id)}`} 
@@ -64,8 +65,14 @@ const Visualization = () => {
     ChangeSongFromButtons={ChangeSongFromButtons}
   />;
 
+  const EmptyContainer = () => <EmptyDiv>
+    It seems you dont have any song to play : (
+    <br /> <br /> <br />
+    But you can add some new ones : )
+  </EmptyDiv>;
+
   return <>
-    {SongsContainer}
+    {songs.length > 0 ? SongsContainer() : EmptyContainer()}
     {selectedSong ? PlayerContainer() : <></>}
   </>
 }

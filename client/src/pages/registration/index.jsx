@@ -1,7 +1,6 @@
 import React, {useRef, useState, useContext} from 'react';
 
 import InputForm from '../../components/forms/input/index';
-import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 import { FormStyled } from './styles';

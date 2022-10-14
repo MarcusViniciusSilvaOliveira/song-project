@@ -1,5 +1,5 @@
 import { REQUEST_PEDDING, REQUEST_FINISHED } from '../../helpers/constants'
-import actions from '../actions/api'
+import actions  from '../actions/api'
 
 export const apiReducer = (state, action) => {
   switch (action.type) {
