@@ -11,6 +11,7 @@ Personal Study project
 ![image](https://user-images.githubusercontent.com/39201633/195762271-da425d25-a236-4b03-8ca6-d0b1690c2b4c.png)
 - Execute the 'npm run dev' to initialize the server side. <br/>
 ![image](https://user-images.githubusercontent.com/39201633/195762611-cf636309-542d-41d3-a9f1-944362437078.png)
+- Access http://localhost:3000 to see the project running.
 
 ### Localhost:3000/songs
 - The database is empty, so you'll get this screen telling you to register new songs.
